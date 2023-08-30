@@ -1,0 +1,50 @@
+package com.example.movetocloudapp.Service;
+
+import com.example.movetocloudapp.Entities.StorageCapacities;
+import com.example.movetocloudapp.Repository.StorageCapacitiesRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class StorageCapacitiesService implements IStorageCapacitiesService{
+    @Autowired
+    StorageCapacitiesRepo storagecapacitiesrepo;
+    @Override
+    public String addStorageCapacities(StorageCapacities z) {
+        storagecapacitiesrepo.save(z);
+        return "Added";
+    }
+    @Override
+    public String updateStorageCapacities(StorageCapacities z ,int id) {
+
+        StorageCapacities z1 = storagecapacitiesrepo.findById(id).get();
+        z1.setClassOfStorage(z.getClassOfStorage());
+        z1.setSfps(z.getSfps());
+        z1.setRnge(z.getRnge());
+        z1.setDiskNumber(z.getDiskNumber());
+        z1.setDiskVolume(z.getDiskVolume());
+        z1.setVolumeBrut(z.getVolumeBrut());
+        z1.setVolumeNet(z.getVolumeNet());
+        storagecapacitiesrepo.saveAndFlush(z1);
+        return "updated";
+    }
+    @Override
+    public String deleteStorageCapacities(int id) {
+
+        storagecapacitiesrepo.deleteById(id);
+        return "deleted";
+    }
+    @Override
+    public List<StorageCapacities> getAllStorageCapacities() {
+
+        return storagecapacitiesrepo.findAll();
+    }
+    @Override
+    public StorageCapacities getStorageCapacitiesById(int id) {
+
+        return storagecapacitiesrepo.findById(id).orElse(null);
+    }
+
+}
