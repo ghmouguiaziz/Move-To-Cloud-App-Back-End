@@ -22,6 +22,7 @@ public class Affiliate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int idAffiliate ;
     private String name ;
+    private String fullName ;
 
     @JsonIgnore
     @ManyToOne

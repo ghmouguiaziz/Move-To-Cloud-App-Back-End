@@ -2,6 +2,7 @@ package com.example.movetocloudapp.Service;
 
 import com.example.movetocloudapp.Entities.DataCenter;
 import com.example.movetocloudapp.Entities.EnvCompute;
+import com.example.movetocloudapp.Entities.Resources;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.EnvComputeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,16 @@ public class EnvComputeService implements IEnvComputeService {
         dc1.setCpu(dc.getCpu());
         dc1.setAnnee(dc.getAnnee());
         dc1.setAvailablity(dc.getAvailablity());
+        dc1.setBcngvram(dc.getBcngvram());
+        dc1.setBcngvcpu(dc.getBcngvcpu());
+        dc1.setBcvcpu(dc.getBcvcpu());
+        dc1.setBcvram(dc.getBcvram());
+        dc1.setIcvcpu(dc.getIcvcpu());
+        dc1.setSfps(dc.getSfps());
+        dc1.setVcpu(dc.getVcpu());
+        dc1.setVram(dc.getVram());
+        dc1.setSfpspare(dc.getSfpspare());
+        dc1.setIcvram(dc.getIcvram());
         envcomputerepo.saveAndFlush(dc1);
         return "updated";
     }
@@ -60,6 +71,10 @@ public class EnvComputeService implements IEnvComputeService {
 
         return envcomputerepo.findById(id).orElse(null);
     }
+    @Override
+    public List<EnvCompute> getAllComputesByDataCenter(String DataCenterName){
+        DataCenter z = datacenterrepo.findByName(DataCenterName);
+        return z.getEnvcomputes();}
 
 
 }

@@ -11,4 +11,5 @@ public interface IEnvComputeService {
     public String deleteEnvCompute(int id);
     public List<EnvCompute> getAllEnvCompute();
     public EnvCompute getEnvComputeById(int id);
+    public List<EnvCompute>getAllComputesByDataCenter(String DataCenterName);
 }

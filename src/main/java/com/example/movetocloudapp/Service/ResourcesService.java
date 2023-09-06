@@ -3,6 +3,7 @@ package com.example.movetocloudapp.Service;
 import com.example.movetocloudapp.Entities.Affiliate;
 import com.example.movetocloudapp.Entities.DataCenter;
 import com.example.movetocloudapp.Entities.Resources;
+import com.example.movetocloudapp.Entities.TypeResource;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.ResourcesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ResourcesService implements IResourcesService {
     public String updateResources(Resources dc ,int id) {
 
         Resources dc1 = resourcesrepo.findById(id).get();
-        dc1.setTypeResource(dc.getTypeResource());
+        dc1.setType(dc.getType());
         dc1.setName(dc.getName());
         dc1.setBcRam(dc.getBcRam());
         dc1.setBcVcpu(dc.getBcVcpu());
@@ -40,6 +41,7 @@ public class ResourcesService implements IResourcesService {
         dc1.setCapaStorage(dc.getCapaStorage());
         dc1.setAnnee(dc.getAnnee());
         dc1.setPerfStrorage(dc.getPerfStrorage());
+        dc1.setHypothesys(dc.getHypothesys());
 
         resourcesrepo.saveAndFlush(dc1);
         return "updated";
@@ -72,4 +74,8 @@ public class ResourcesService implements IResourcesService {
     public List<Resources> getAllResourcesByDataCenter(String DataCenterName){
         DataCenter z = datacenterrepo.findByName(DataCenterName);
         return z.getResources();}
+    @Override
+    public List <Resources> findByType(){
+        return resourcesrepo.findByType(TypeResource.CurrAppLocalPaaS);
+    }
 }

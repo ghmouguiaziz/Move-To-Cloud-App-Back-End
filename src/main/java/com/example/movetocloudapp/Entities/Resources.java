@@ -28,10 +28,10 @@ public class Resources implements Serializable {
     private int icRam;
     private int perfStrorage;
     private int capaStorage;
-    private String Hypothesys;
+    private String hypothesys;
 
     @Enumerated(EnumType.STRING)
-    private TypeResource typeResource;
+    private TypeResource type;
     @JsonIgnore
     @ManyToOne
     private  DataCenter datacenter;

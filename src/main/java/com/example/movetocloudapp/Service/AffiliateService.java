@@ -29,6 +29,7 @@ public class AffiliateService implements IAffiliateService {
 
         Affiliate a1 = affiliaterepo.findById(id).get();
         a1.setName(a.getName());
+        a1.setFullName(a.getFullName());
         affiliaterepo.saveAndFlush(a1);
         return "updated";
     }

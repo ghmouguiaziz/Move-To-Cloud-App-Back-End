@@ -2,6 +2,7 @@ package com.example.movetocloudapp.Service;
 
 import com.example.movetocloudapp.Entities.DataCenter;
 import com.example.movetocloudapp.Entities.Resources;
+import com.example.movetocloudapp.Entities.TypeResource;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface IResourcesService {
     public List<Resources> getAllResources();
     public Resources getResourcesById(int id);
     public List<Resources> getAllResourcesByDataCenter(String AffiliateName);
+    public List <Resources> findByType();
 }

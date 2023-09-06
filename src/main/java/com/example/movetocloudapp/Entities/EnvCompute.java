@@ -21,8 +21,18 @@ public class EnvCompute implements Serializable {
     private String classOfCompute ;
     private int qty ;
     private int spareQty;
+    private int vcpu;
     private int cpu;
     private int annee;
+    private int vram;
+    private int bcvcpu;
+    private int bcvram;
+    private int bcngvcpu;
+    private int bcngvram;
+    private int icvcpu;
+    private int icvram;
+    private int sfps;
+    private int sfpspare;
     @Enumerated(EnumType.STRING)
     private Availablity availablity ;
     @JsonIgnore

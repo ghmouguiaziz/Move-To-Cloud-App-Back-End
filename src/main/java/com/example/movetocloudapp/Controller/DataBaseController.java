@@ -232,6 +232,10 @@ public class DataBaseController {
 
         return ienvcomputeservice.getAllEnvCompute();
     }
+    @GetMapping("/getAllComputesByDataCenter/{dataCenterName}")
+    public List<EnvCompute> getAllComputesByDataCenter(@PathVariable String dataCenterName) {
+        return ienvcomputeservice.getAllComputesByDataCenter(dataCenterName);
+    }
     //////////////////////////////////EnvControlNetwork///////////////////////////////////////////////
 
     @PostMapping("/addEnvControlNetwork/{id}")
@@ -351,6 +355,10 @@ public class DataBaseController {
     @GetMapping("/getAllResourcesByDataCenter/{dataCenterName}")
     public List<Resources> getAllResourcesByDataCenter(@PathVariable String dataCenterName) {
         return iresourcesservice.getAllResourcesByDataCenter(dataCenterName);
+    }
+    @GetMapping("/findByType")
+   public List<Resources> findByType(){
+        return iresourcesservice.findByType();
     }
 
 
