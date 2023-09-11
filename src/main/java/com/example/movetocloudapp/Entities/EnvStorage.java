@@ -23,6 +23,14 @@ public class EnvStorage implements Serializable {
     private int rnge;
     private int qty ;
     private int spareQty;
+    private int sfpspare ;
+    private int sfps ;
+    private int grossVolume ;
+    private int netVolume ;
+    private int perfGrossVolume ;
+    private int capaNetVolume ;
+    private int perfNetVolume ;
+    private int capaGrossVolume ;
     private int annee;
 
     @Enumerated(EnumType.STRING)

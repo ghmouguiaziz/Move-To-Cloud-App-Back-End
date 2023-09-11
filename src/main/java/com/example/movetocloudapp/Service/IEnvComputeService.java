@@ -1,5 +1,6 @@
 package com.example.movetocloudapp.Service;
 
+import com.example.movetocloudapp.Entities.Availablity;
 import com.example.movetocloudapp.Entities.EnvCompute;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface IEnvComputeService {
     public List<EnvCompute> getAllEnvCompute();
     public EnvCompute getEnvComputeById(int id);
     public List<EnvCompute>getAllComputesByDataCenter(String DataCenterName);
+    public List<EnvCompute> findByAvailablity(Availablity t, String name);
 }

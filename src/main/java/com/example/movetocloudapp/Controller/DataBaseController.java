@@ -356,9 +356,21 @@ public class DataBaseController {
     public List<Resources> getAllResourcesByDataCenter(@PathVariable String dataCenterName) {
         return iresourcesservice.getAllResourcesByDataCenter(dataCenterName);
     }
-    @GetMapping("/findByType")
-   public List<Resources> findByType(){
-        return iresourcesservice.findByType();
+    @GetMapping("/findByType/{type}/{name}")
+   public List<Resources> findByType(@PathVariable TypeResource type, @PathVariable String name){
+        return iresourcesservice.findByType(type,name);
+    }
+    @GetMapping("/findByAvailablity/{type}/{name}")
+    public List<EnvCompute> findByAvailablity(@PathVariable Availablity type, @PathVariable String name){
+        return ienvcomputeservice.findByAvailablity(type,name);
+    }
+    @GetMapping("/findByAvailablityStorage/{type}/{name}")
+    public List<EnvStorage> findByAvailablityStorage(@PathVariable Availablity type, @PathVariable String name){
+        return ienvstorageservice.findByAvailablityStorage(type,name);
+    }
+    @GetMapping("/findByAvailablityControlNetwork/{type}/{name}")
+    public List<EnvControlNetwork> findByAvailablityControlNetwork(@PathVariable Availablity type, @PathVariable String name){
+        return ienvControlnetworkservice.findByAvailablityControlNetwork(type,name);
     }
 
 

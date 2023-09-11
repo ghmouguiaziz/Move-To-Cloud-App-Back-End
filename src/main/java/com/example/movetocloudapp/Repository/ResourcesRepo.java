@@ -13,5 +13,5 @@ public interface ResourcesRepo extends JpaRepository<Resources,Integer> {
 
 
 
-    List<Resources> findByType(TypeResource type);
+    List<Resources> findByTypeAndDatacenter_Name(TypeResource type, String name);
 }

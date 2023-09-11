@@ -1,6 +1,8 @@
 package com.example.movetocloudapp.Service;
 
-import com.example.movetocloudapp.Entities.DataCenter;
+import com.example.movetocloudapp.Entities.Availablity;
+import com.example.movetocloudapp.Entities.*;
+import com.example.movetocloudapp.Entities.EnvCompute;
 import com.example.movetocloudapp.Entities.EnvControlNetwork;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.EnvControlNetworkRepo;
@@ -31,6 +33,8 @@ public class EnvControlNetworkService implements IEnvControlNetwork{
         dc1.setQty(dc.getQty());
         dc1.setSpareQty(dc.getSpareQty());
         dc1.setAnnee(dc.getAnnee());
+        dc1.setSfps(dc.getSfps());
+        dc1.setSfpspare(dc.getSfpspare());
         dc1.setAvailablity(dc.getAvailablity());
         envcontrolnetworkrepo.saveAndFlush(dc1);
         return "updated";
@@ -58,6 +62,10 @@ public class EnvControlNetworkService implements IEnvControlNetwork{
     public EnvControlNetwork getEnvControlNetworkById(int id) {
 
         return envcontrolnetworkrepo.findById(id).orElse(null);
+    }
+
+    public List<EnvControlNetwork> findByAvailablityControlNetwork(Availablity t, String name){
+        return envcontrolnetworkrepo.findByAvailablityAndDatacenter_Name(t , name);
     }
 
 }

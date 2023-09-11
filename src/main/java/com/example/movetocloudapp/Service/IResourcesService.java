@@ -14,5 +14,5 @@ public interface IResourcesService {
     public List<Resources> getAllResources();
     public Resources getResourcesById(int id);
     public List<Resources> getAllResourcesByDataCenter(String AffiliateName);
-    public List <Resources> findByType();
+    public List <Resources> findByType(TypeResource t, String name);
 }

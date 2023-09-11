@@ -1,6 +1,8 @@
 package com.example.movetocloudapp.Service;
 
+import com.example.movetocloudapp.Entities.Availablity;
 import com.example.movetocloudapp.Entities.DataCenter;
+import com.example.movetocloudapp.Entities.EnvCompute;
 import com.example.movetocloudapp.Entities.EnvStorage;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.EnvStorageRepo;
@@ -32,7 +34,14 @@ public class EnvStorageService implements IEnvStorageService{
         dc1.setRnge(dc.getRnge());
         dc1.setSpareQty(dc.getSpareQty());
         dc1.setAnnee(dc.getAnnee());
-        dc1.setAvailablity(dc.getAvailablity());
+        dc1.setGrossVolume(dc.getGrossVolume());
+        dc1.setNetVolume(dc.getNetVolume());
+        dc1.setSfps(dc.getSfps());
+        dc1.setSfpspare(dc.getSfpspare());
+        dc1.setPerfGrossVolume(dc.getPerfGrossVolume());
+        dc1.setPerfNetVolume(dc.getPerfNetVolume());
+        dc1.setCapaGrossVolume(dc.getCapaGrossVolume());
+        dc1.setCapaNetVolume(dc.getCapaNetVolume());
         envstoragerepo.saveAndFlush(dc1);
         return "updated";
     }
@@ -59,6 +68,9 @@ public class EnvStorageService implements IEnvStorageService{
     public EnvStorage getEnvStorageById(int id) {
 
         return envstoragerepo.findById(id).orElse(null);
+    }
+    public List<EnvStorage> findByAvailablityStorage(Availablity t, String name){
+        return envstoragerepo.findByAvailablityAndDatacenter_Name(t , name);
     }
 
 }

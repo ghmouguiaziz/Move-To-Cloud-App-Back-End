@@ -1,8 +1,6 @@
 package com.example.movetocloudapp.Service;
 
-import com.example.movetocloudapp.Entities.DataCenter;
-import com.example.movetocloudapp.Entities.EnvCompute;
-import com.example.movetocloudapp.Entities.Resources;
+import com.example.movetocloudapp.Entities.*;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.EnvComputeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +73,8 @@ public class EnvComputeService implements IEnvComputeService {
     public List<EnvCompute> getAllComputesByDataCenter(String DataCenterName){
         DataCenter z = datacenterrepo.findByName(DataCenterName);
         return z.getEnvcomputes();}
-
-
+    public List<EnvCompute> findByAvailablity(Availablity t, String name){
+        return envcomputerepo.findByAvailablityAndDatacenter_Name(t , name);
+    }
 }
+

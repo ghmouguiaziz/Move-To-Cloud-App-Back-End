@@ -21,6 +21,8 @@ public class EnvControlNetwork implements Serializable {
     private String classOfControlNetwork ;
     private int qty ;
     private int spareQty;
+    private int sfpspare;
+    private int sfps;
     private int annee;
     @Enumerated(EnumType.STRING)
     private Availablity availablity ;

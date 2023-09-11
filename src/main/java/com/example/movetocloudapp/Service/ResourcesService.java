@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.example.movetocloudapp.Entities.TypeResource.*;
+
 @Service
 public class ResourcesService implements IResourcesService {
     @Autowired
@@ -75,7 +77,7 @@ public class ResourcesService implements IResourcesService {
         DataCenter z = datacenterrepo.findByName(DataCenterName);
         return z.getResources();}
     @Override
-    public List <Resources> findByType(){
-        return resourcesrepo.findByType(TypeResource.CurrAppLocalPaaS);
+    public List <Resources> findByType(TypeResource t, String name){
+        return resourcesrepo.findByTypeAndDatacenter_Name(t , name);
     }
 }
