@@ -69,8 +69,8 @@ public class EnvStorageService implements IEnvStorageService{
 
         return envstoragerepo.findById(id).orElse(null);
     }
-    public List<EnvStorage> findByAvailablityStorage(Availablity t, String name){
-        return envstoragerepo.findByAvailablityAndDatacenter_Name(t , name);
+    public List<EnvStorage> findByAvailablityStorage(Availablity t, int id){
+        return envstoragerepo.findByAvailablityAndDatacenter_IdDataCenter(t , id);
     }
 
 }

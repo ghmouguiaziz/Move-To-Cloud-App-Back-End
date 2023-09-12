@@ -13,5 +13,5 @@ public interface IEnvStorageService {
     public String deleteEnvStorage(int id);
     public List<EnvStorage> getAllEnvStorage();
     public EnvStorage getEnvStorageById(int id);
-    public List<EnvStorage> findByAvailablityStorage(Availablity t, String name);
+    public List<EnvStorage> findByAvailablityStorage(Availablity t, int id);
 }

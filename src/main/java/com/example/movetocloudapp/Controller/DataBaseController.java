@@ -14,6 +14,16 @@ public class DataBaseController {
     @Autowired
     IZoneService izoneservice;
     @Autowired
+    IDevicesPurService iDevicesPurservice;
+    @Autowired
+    IServersPurService iServersPurservice;
+    @Autowired
+    ILicensesPriceService iLicensesPriceservice;
+    @Autowired
+    ILicensesPurService iLicensesPurservice;
+    @Autowired
+    IServersAndDevicesPriceService iServersAndDevicesPriceservice;
+    @Autowired
     IAffiliateService iaffiliateservice;
     @Autowired
     IDataCenterService idatacenterservice;
@@ -356,21 +366,159 @@ public class DataBaseController {
     public List<Resources> getAllResourcesByDataCenter(@PathVariable String dataCenterName) {
         return iresourcesservice.getAllResourcesByDataCenter(dataCenterName);
     }
-    @GetMapping("/findByType/{type}/{name}")
-   public List<Resources> findByType(@PathVariable TypeResource type, @PathVariable String name){
-        return iresourcesservice.findByType(type,name);
+    @GetMapping("/findByType/{type}/{id}")
+   public List<Resources> findByType(@PathVariable TypeResource type, @PathVariable int id){
+        return iresourcesservice.findByType(type,id);
     }
-    @GetMapping("/findByAvailablity/{type}/{name}")
-    public List<EnvCompute> findByAvailablity(@PathVariable Availablity type, @PathVariable String name){
-        return ienvcomputeservice.findByAvailablity(type,name);
+    @GetMapping("/findByAvailablity/{type}/{id}")
+    public List<EnvCompute> findByAvailablity(@PathVariable Availablity type, @PathVariable int id){
+        return ienvcomputeservice.findByAvailablity(type,id);
     }
-    @GetMapping("/findByAvailablityStorage/{type}/{name}")
-    public List<EnvStorage> findByAvailablityStorage(@PathVariable Availablity type, @PathVariable String name){
-        return ienvstorageservice.findByAvailablityStorage(type,name);
+    @GetMapping("/findByAvailablityStorage/{type}/{id}")
+    public List<EnvStorage> findByAvailablityStorage(@PathVariable Availablity type, @PathVariable int id){
+        return ienvstorageservice.findByAvailablityStorage(type,id);
     }
-    @GetMapping("/findByAvailablityControlNetwork/{type}/{name}")
-    public List<EnvControlNetwork> findByAvailablityControlNetwork(@PathVariable Availablity type, @PathVariable String name){
-        return ienvControlnetworkservice.findByAvailablityControlNetwork(type,name);
+    @GetMapping("/findByAvailablityControlNetwork/{type}/{id}")
+    public List<EnvControlNetwork> findByAvailablityControlNetwork(@PathVariable Availablity type, @PathVariable int id){
+        return ienvControlnetworkservice.findByAvailablityControlNetwork(type,id);
+    }
+
+    //////////////////////////////////DevicesPur///////////////////////////////////////////////
+    @PostMapping("/addDevicesPur/{id}")
+    public String addDevicesPur(@RequestBody DevicesPur e, @PathVariable int id){
+        return iDevicesPurservice.addDevicesPur(e,id);
+    }
+    @PutMapping("/updateDevicesPur/{id}")
+    public String updateDevicesPur(@RequestBody DevicesPur e,@PathVariable int id){
+        return iDevicesPurservice.updateDevicesPur(e,id);
+    }
+    @DeleteMapping("/deleteDevicesPur/{id}")
+    public String deleteDevicesPur(@PathVariable int id) {
+
+        return  iDevicesPurservice.deleteDevicesPur(id);
+    }
+    @GetMapping("/getDevicesPurById/{id}")
+    public DevicesPur getDevicesPurById(@PathVariable int id){
+
+        return iDevicesPurservice.getDevicesPurById(id);
+    }
+    @GetMapping("/getAllDevicesPur")
+    public List<DevicesPur> getAllDevicesPur(){
+
+        return iDevicesPurservice.getAllDevicesPur();
+    }
+    @GetMapping("/findDevicesPurByDataCenter/{id}")
+    public  List<DevicesPur> findByDataCenter(@PathVariable int id){
+        return iDevicesPurservice.findByDataCenter(id);
+    }
+
+    //////////////////////////////////LicensesPur///////////////////////////////////////////////
+    @PostMapping("/addLicensesPur/{id}")
+    public String addLicensesPur(@RequestBody LicensesPur e, @PathVariable int id){
+        return iLicensesPurservice.addLicensesPur(e,id);
+    }
+    @PutMapping("/updateLicensesPur/{id}")
+    public String updateLicensesPur(@RequestBody LicensesPur e,@PathVariable int id){
+        return iLicensesPurservice.updateLicensesPur(e,id);
+    }
+    @DeleteMapping("/deleteLicensesPur/{id}")
+    public String deleteLicensesPur(@PathVariable int id) {
+
+        return  iLicensesPurservice.deleteLicensesPur(id);
+    }
+    @GetMapping("/getLicensesPurById/{id}")
+    public LicensesPur getLicensesPurById(@PathVariable int id){
+
+        return iLicensesPurservice.getLicensesPurById(id);
+    }
+    @GetMapping("/getAllLicensesPur")
+    public List<LicensesPur> getAllLicensesPur(){
+
+        return iLicensesPurservice.getAllLicensesPur();
+    }
+    @GetMapping("/findLicensesPurByDataCenter/{id}")
+    public  List<LicensesPur> findByLicensesPurDataCenter(@PathVariable int id){
+        return iLicensesPurservice.findByDataCenter(id);
+    }
+    //////////////////////////////////ServersPur///////////////////////////////////////////////
+    @PostMapping("/addServersPur/{id}")
+    public String addServersPur(@RequestBody ServersPur e, @PathVariable int id){
+        return iServersPurservice.addServersPur(e,id);
+    }
+    @PutMapping("/updateServersPur/{id}")
+    public String updateServersPur(@RequestBody ServersPur e,@PathVariable int id){
+        return iServersPurservice.updateServersPur(e,id);
+    }
+    @DeleteMapping("/deleteServersPur/{id}")
+    public String deleteServersPur(@PathVariable int id) {
+
+        return  iServersPurservice.deleteServersPur(id);
+    }
+    @GetMapping("/getServersPurById/{id}")
+    public ServersPur getServersPurById(@PathVariable int id){
+
+        return iServersPurservice.getServersPurById(id);
+    }
+    @GetMapping("/getAllServersPur")
+    public List<ServersPur> getAllServersPur(){
+
+        return iServersPurservice.getAllServersPur();
+    }
+    @GetMapping("/findServersPurByDataCenter/{id}")
+    public  List<ServersPur> findByServersPurDataCenter(@PathVariable int id){
+        return iServersPurservice.findByDataCenter(id);
+    }
+
+    //////////////////////////////////LicensesPrice///////////////////////////////////////////////
+    @PostMapping("/addLicensesPrice")
+    public String addLicensesPrice(@RequestBody LicensesPrice z) {
+
+        return  iLicensesPriceservice.addLicensesPrice(z);
+    }
+    @PutMapping("/updateLicensesPrice/{id}")
+    public String updateLicensesPrice(@RequestBody LicensesPrice z,@PathVariable int id){
+        return iLicensesPriceservice.updateLicensesPrice(z,id);
+    }
+    @DeleteMapping("/deleteLicensesPrice/{id}")
+    public String deleteLicensesPrice(@PathVariable int id) {
+
+        return  iLicensesPriceservice.deleteLicensesPrice(id);
+    }
+    @GetMapping("/getAllLicensesPrice")
+    public List<LicensesPrice> getAllLicensesPrice(){
+
+        return iLicensesPriceservice.getAllLicensesPrice();
+    }
+    @GetMapping("/getLicensesPriceById/{id}")
+    public LicensesPrice getLicensesPriceById(@PathVariable int id){
+
+        return iLicensesPriceservice.getLicensesPriceById(id);
+    }
+
+    //////////////////////////////////ServersAndDevicesPrice///////////////////////////////////////////////
+    @PostMapping("/addServersAndDevicesPrice")
+    public String addServersAndDevicesPrice(@RequestBody ServersAndDevicesPrice z) {
+
+        return  iServersAndDevicesPriceservice.addServersAndDevicesPrice(z);
+    }
+    @PutMapping("/updateServersAndDevicesPrice/{id}")
+    public String updateServersAndDevicesPrice(@RequestBody ServersAndDevicesPrice z,@PathVariable int id){
+        return iServersAndDevicesPriceservice.updateServersAndDevicesPrice(z,id);
+    }
+    @DeleteMapping("/deleteServersAndDevicesPrice/{id}")
+    public String deleteServersAndDevicesPrice(@PathVariable int id) {
+
+        return  iServersAndDevicesPriceservice.deleteServersAndDevicesPrice(id);
+    }
+    @GetMapping("/getAllServersAndDevicesPrice")
+    public List<ServersAndDevicesPrice> getAllServersAndDevicesPrice(){
+
+        return iServersAndDevicesPriceservice.getAllServersAndDevicesPrice();
+    }
+    @GetMapping("/getServersAndDevicesPriceById/{id}")
+    public ServersAndDevicesPrice getServersAndDevicesPriceById(@PathVariable int id){
+
+        return iServersAndDevicesPriceservice.getServersAndDevicesPriceById(id);
     }
 
 

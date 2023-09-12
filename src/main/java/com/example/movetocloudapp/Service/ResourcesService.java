@@ -77,7 +77,7 @@ public class ResourcesService implements IResourcesService {
         DataCenter z = datacenterrepo.findByName(DataCenterName);
         return z.getResources();}
     @Override
-    public List <Resources> findByType(TypeResource t, String name){
-        return resourcesrepo.findByTypeAndDatacenter_Name(t , name);
+    public List <Resources> findByType(TypeResource t, int id){
+        return resourcesrepo.findByTypeAndDatacenter_IdDataCenter(t , id);
     }
 }

@@ -64,8 +64,8 @@ public class EnvControlNetworkService implements IEnvControlNetwork{
         return envcontrolnetworkrepo.findById(id).orElse(null);
     }
 
-    public List<EnvControlNetwork> findByAvailablityControlNetwork(Availablity t, String name){
-        return envcontrolnetworkrepo.findByAvailablityAndDatacenter_Name(t , name);
+    public List<EnvControlNetwork> findByAvailablityControlNetwork(Availablity t, int id){
+        return envcontrolnetworkrepo.findByAvailablityAndDatacenter_IdDataCenter(t , id);
     }
 
 }

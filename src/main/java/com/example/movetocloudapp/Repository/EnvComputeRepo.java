@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface EnvComputeRepo extends JpaRepository<EnvCompute,Integer> {
-    List<EnvCompute> findByAvailablityAndDatacenter_Name(Availablity a,String name);
+    List<EnvCompute> findByAvailablityAndDatacenter_IdDataCenter(Availablity a,int id);
 
 }

@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface EnvStorageRepo extends JpaRepository<EnvStorage,Integer> {
-    List<EnvStorage> findByAvailablityAndDatacenter_Name(Availablity a, String name);
+    List<EnvStorage> findByAvailablityAndDatacenter_IdDataCenter(Availablity a, int id);
 }

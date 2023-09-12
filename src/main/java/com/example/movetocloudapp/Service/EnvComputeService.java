@@ -73,8 +73,8 @@ public class EnvComputeService implements IEnvComputeService {
     public List<EnvCompute> getAllComputesByDataCenter(String DataCenterName){
         DataCenter z = datacenterrepo.findByName(DataCenterName);
         return z.getEnvcomputes();}
-    public List<EnvCompute> findByAvailablity(Availablity t, String name){
-        return envcomputerepo.findByAvailablityAndDatacenter_Name(t , name);
+    public List<EnvCompute> findByAvailablity(Availablity t, int id){
+        return envcomputerepo.findByAvailablityAndDatacenter_IdDataCenter(t , id);
     }
 }
 

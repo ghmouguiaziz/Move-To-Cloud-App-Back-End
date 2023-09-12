@@ -12,5 +12,5 @@ public interface IEnvControlNetwork {
     public String deleteEnvControlNetwork(int id);
     public List<EnvControlNetwork> getAllEnvControlNetwork();
     public EnvControlNetwork getEnvControlNetworkById(int id);
-    public List<EnvControlNetwork> findByAvailablityControlNetwork(Availablity t, String name);
+    public List<EnvControlNetwork> findByAvailablityControlNetwork(Availablity t, int id);
 }

@@ -41,4 +41,13 @@ public class DataCenter implements Serializable {
 
     @OneToMany(mappedBy = "datacenter", cascade = CascadeType.ALL)
     private List<NetworkElements> networkelements;
+
+    @OneToMany(mappedBy = "datacenter", cascade = CascadeType.ALL)
+    private List<DevicesPur> devicespurs;
+
+    @OneToMany(mappedBy = "datacenter", cascade = CascadeType.ALL)
+    private List<LicensesPur> licensespurs;
+
+    @OneToMany(mappedBy = "datacenter", cascade = CascadeType.ALL)
+    private List<ServersPur> serverspurs;
 }

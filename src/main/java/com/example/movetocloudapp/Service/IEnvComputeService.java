@@ -13,5 +13,5 @@ public interface IEnvComputeService {
     public List<EnvCompute> getAllEnvCompute();
     public EnvCompute getEnvComputeById(int id);
     public List<EnvCompute>getAllComputesByDataCenter(String DataCenterName);
-    public List<EnvCompute> findByAvailablity(Availablity t, String name);
+    public List<EnvCompute> findByAvailablity(Availablity t, int id);
 }

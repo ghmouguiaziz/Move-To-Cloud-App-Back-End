@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface EnvControlNetworkRepo extends JpaRepository<EnvControlNetwork,Integer> {
-    List<EnvControlNetwork> findByAvailablityAndDatacenter_Name(Availablity a, String name);
+    List<EnvControlNetwork> findByAvailablityAndDatacenter_IdDataCenter(Availablity a, int id);
 }
