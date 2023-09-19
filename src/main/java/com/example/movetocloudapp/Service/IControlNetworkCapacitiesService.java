@@ -13,5 +13,6 @@ public interface IControlNetworkCapacitiesService {
     public String deleteControlNetworkCapacities(int id);
     public List<ControlNetworkCapacities> getAllControlNetworkCapacities();
     public ControlNetworkCapacities getControlNetworkCapacitiesById(int id);
+    public ControlNetworkCapacities findByClassOfControlNetwork(String name);
 
 }

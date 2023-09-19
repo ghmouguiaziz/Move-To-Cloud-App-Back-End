@@ -24,9 +24,9 @@ public class ComputeCapacitiesService implements IComputeCapacitiesService {
         z1.setCpu(z.getCpu());
         z1.setMaxvram(z.getMaxvram());
         z1.setMaxvcpu(z.getMaxvcpu());
-        z1.setRam(z.getRam());
+        z1.setName(z.getName());
         z1.setSfps(z.getSfps());
-        z1.setCpuPc(z.getCpuPc());
+        z1.setDescr(z.getDescr());
         computecapacitiesrepo.saveAndFlush(z1);
         return "updated";
     }
@@ -45,6 +45,11 @@ public class ComputeCapacitiesService implements IComputeCapacitiesService {
     public ComputeCapacities getComputeCapacitiesById(int id) {
 
         return computecapacitiesrepo.findById(id).orElse(null);
+    }
+    @Override
+    public ComputeCapacities findByClassOfCompute(String name){
+
+        return computecapacitiesrepo.findByName(name);
     }
 
 }

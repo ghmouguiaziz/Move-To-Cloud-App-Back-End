@@ -1,5 +1,6 @@
 package com.example.movetocloudapp.Service;
 
+import com.example.movetocloudapp.Entities.Availablity;
 import com.example.movetocloudapp.Entities.NetworkElements;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface INetworkElementsService {
     public String deleteNetworkElements(int id);
     public List<NetworkElements> getAllNetworkElements();
     public NetworkElements getNetworkElementsById(int id);
+    public List<NetworkElements> findByAvailablity(Availablity t, int id);
 }

@@ -10,4 +10,5 @@ public interface IComputeCapacitiesService {
     public String deleteComputeCapacities(int id);
     public List<ComputeCapacities> getAllComputeCapacities();
     public ComputeCapacities getComputeCapacitiesById(int id);
+    public ComputeCapacities findByClassOfCompute(String name);
 }

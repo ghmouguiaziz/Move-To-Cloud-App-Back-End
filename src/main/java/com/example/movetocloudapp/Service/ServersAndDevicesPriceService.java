@@ -1,11 +1,15 @@
 package com.example.movetocloudapp.Service;
 
+import com.example.movetocloudapp.Entities.*;
 import com.example.movetocloudapp.Entities.ServersAndDevicesPrice;
 import com.example.movetocloudapp.Repository.ServersAndDevicesPriceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.example.movetocloudapp.Entities.ServerType.server;
+
 
 @Service
 public class ServersAndDevicesPriceService implements IServersAndDevicesPriceService{
@@ -45,5 +49,9 @@ public class ServersAndDevicesPriceService implements IServersAndDevicesPriceSer
     public ServersAndDevicesPrice getServersAndDevicesPriceById(int id) {
 
         return ServersAndDevicesPricerepo.findById(id).orElse(null);
+    }
+    @Override
+    public  List<ServersAndDevicesPrice> findByTypeServer(ServerType s){
+        return ServersAndDevicesPricerepo.findByType(s);
     }
 }

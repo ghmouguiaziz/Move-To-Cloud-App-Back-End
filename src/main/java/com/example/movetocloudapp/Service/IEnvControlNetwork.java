@@ -13,4 +13,5 @@ public interface IEnvControlNetwork {
     public List<EnvControlNetwork> getAllEnvControlNetwork();
     public EnvControlNetwork getEnvControlNetworkById(int id);
     public List<EnvControlNetwork> findByAvailablityControlNetwork(Availablity t, int id);
+
 }

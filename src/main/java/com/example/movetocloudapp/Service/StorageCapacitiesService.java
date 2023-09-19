@@ -1,5 +1,6 @@
 package com.example.movetocloudapp.Service;
 
+import com.example.movetocloudapp.Entities.ComputeCapacities;
 import com.example.movetocloudapp.Entities.StorageCapacities;
 import com.example.movetocloudapp.Repository.StorageCapacitiesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class StorageCapacitiesService implements IStorageCapacitiesService{
         z1.setDiskVolume(z.getDiskVolume());
         z1.setVolumeBrut(z.getVolumeBrut());
         z1.setVolumeNet(z.getVolumeNet());
+        z1.setName(z.getName());
+        z1.setDescr(z.getDescr());
         storagecapacitiesrepo.saveAndFlush(z1);
         return "updated";
     }
@@ -45,6 +48,10 @@ public class StorageCapacitiesService implements IStorageCapacitiesService{
     public StorageCapacities getStorageCapacitiesById(int id) {
 
         return storagecapacitiesrepo.findById(id).orElse(null);
+    }
+    @Override
+    public StorageCapacities findByClassOfStorage(String name){
+        return storagecapacitiesrepo.findByName(name);
     }
 
 }

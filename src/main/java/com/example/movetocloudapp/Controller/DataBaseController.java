@@ -13,8 +13,14 @@ import java.util.List;
 public class DataBaseController {
     @Autowired
     IZoneService izoneservice;
+
     @Autowired
     IDevicesPurService iDevicesPurservice;
+
+    @Autowired
+    INetworkElementsCapacitiesService iNetworkElementscapacitiesservice;
+    @Autowired
+    INetworkElementsService INetworkElementsService;
     @Autowired
     IServersPurService iServersPurservice;
     @Autowired
@@ -68,7 +74,11 @@ public class DataBaseController {
 
         return icontrolnetworkcapacitiesservice.getControlNetworkCapacitiesById(id);
     }
+    @GetMapping("/findByClassOfControlNetwork/{name}")
+    public ControlNetworkCapacities findByClassOfControlNetwork(@PathVariable String name){
 
+        return icontrolnetworkcapacitiesservice.findByClassOfControlNetwork(name);
+    }
     //////////////////////////////////ComputeCapacities///////////////////////////////////////////////
     @PostMapping("/addComputeCapacities")
     public String addComputeCapacities(@RequestBody ComputeCapacities z) {
@@ -95,6 +105,45 @@ public class DataBaseController {
         return icomputecapacitiesservice.getComputeCapacitiesById(id);
     }
 
+    @GetMapping("/findByClassOfCompute/{name}")
+    public ComputeCapacities findByClassOfCompute(@PathVariable String name){
+
+        return icomputecapacitiesservice.findByClassOfCompute(name);
+    }
+
+    //////////////////////////////////NetworkElementsCapacities///////////////////////////////////////////////
+    @PostMapping("/addNetworkElementsCapacities")
+    public String addNetworkElementsCapacities(@RequestBody NetworkElementsCapacities z) {
+
+        return  iNetworkElementscapacitiesservice.addNetworkElementsCapacities(z);
+    }
+    @PutMapping("/updateNetworkElementsCapacities/{id}")
+    public String updateNetworkElementsCapacities(@RequestBody NetworkElementsCapacities z,@PathVariable int id){
+        return iNetworkElementscapacitiesservice.updateNetworkElementsCapacities(z,id);
+    }
+    @DeleteMapping("/deleteNetworkElementsCapacities/{id}")
+    public String deleteNetworkElementsCapacities(@PathVariable int id) {
+
+        return  iNetworkElementscapacitiesservice.deleteNetworkElementsCapacities(id);
+    }
+    @GetMapping("/getAllNetworkElementsCapacities")
+    public List<NetworkElementsCapacities> getAllNetworkElementsCapacities(){
+
+        return iNetworkElementscapacitiesservice.getAllNetworkElementsCapacities();
+    }
+    @GetMapping("/getNetworkElementsCapacitiesById/{id}")
+    public NetworkElementsCapacities getNetworkElementsCapacitiesById(@PathVariable int id){
+
+        return iNetworkElementscapacitiesservice.getNetworkElementsCapacitiesById(id);
+    }
+    @GetMapping("/findByDeviceName/{name}")
+    public NetworkElementsCapacities findByDeviceName(@PathVariable String name){
+
+        return iNetworkElementscapacitiesservice.findByDeviceName(name);
+    }
+
+
+
     //////////////////////////////////StorageCapacities///////////////////////////////////////////////
     @PostMapping("/addStorageCapacities")
     public String addStorageCapacities(@RequestBody StorageCapacities z) {
@@ -119,6 +168,12 @@ public class DataBaseController {
     public StorageCapacities getStorageCapacitiesById(@PathVariable int id){
 
         return istoragecapacitiesservice.getStorageCapacitiesById(id);
+    }
+
+    @GetMapping("/findByClassOfStorage/{name}")
+    public StorageCapacities findByClassOfStorage(@PathVariable String name){
+
+        return istoragecapacitiesservice.findByClassOfStorage(name);
     }
     //////////////////////////////////Zone///////////////////////////////////////////////
     @PostMapping("/addZone")
@@ -374,6 +429,10 @@ public class DataBaseController {
     public List<EnvCompute> findByAvailablity(@PathVariable Availablity type, @PathVariable int id){
         return ienvcomputeservice.findByAvailablity(type,id);
     }
+    @GetMapping("/findComputesByYear/{type}/{id}/{year}")
+    public List<EnvCompute> findComputesByYear(@PathVariable Availablity type, @PathVariable int id, @PathVariable int year){
+        return ienvcomputeservice.findComputesByYear(type,id,year);
+    }
     @GetMapping("/findByAvailablityStorage/{type}/{id}")
     public List<EnvStorage> findByAvailablityStorage(@PathVariable Availablity type, @PathVariable int id){
         return ienvstorageservice.findByAvailablityStorage(type,id);
@@ -381,6 +440,10 @@ public class DataBaseController {
     @GetMapping("/findByAvailablityControlNetwork/{type}/{id}")
     public List<EnvControlNetwork> findByAvailablityControlNetwork(@PathVariable Availablity type, @PathVariable int id){
         return ienvControlnetworkservice.findByAvailablityControlNetwork(type,id);
+    }
+    @GetMapping("/findByAvailablityElements/{type}/{id}")
+    public List<NetworkElements> findByAvailablityElements(@PathVariable Availablity type, @PathVariable int id){
+        return INetworkElementsService.findByAvailablity(type,id);
     }
 
     //////////////////////////////////DevicesPur///////////////////////////////////////////////
@@ -519,6 +582,10 @@ public class DataBaseController {
     public ServersAndDevicesPrice getServersAndDevicesPriceById(@PathVariable int id){
 
         return iServersAndDevicesPriceservice.getServersAndDevicesPriceById(id);
+    }
+    @GetMapping("/findByTypeServer/{type}")
+    public  List<ServersAndDevicesPrice> findByTypeServer(@PathVariable ServerType type){
+        return iServersAndDevicesPriceservice.findByTypeServer(type);
     }
 
 

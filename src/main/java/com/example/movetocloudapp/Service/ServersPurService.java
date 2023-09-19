@@ -53,6 +53,7 @@ public class ServersPurService implements IServersPurService{
         return ServersPurrepo.findById(id).orElse(null);
     }
     public List<ServersPur> findByDataCenter(int id){
+
         return ServersPurrepo.findByDatacenter_IdDataCenter(id);
     }
 

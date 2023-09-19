@@ -10,4 +10,5 @@ public interface IStorageCapacitiesService {
     public String deleteStorageCapacities(int id);
     public List<StorageCapacities> getAllStorageCapacities();
     public StorageCapacities getStorageCapacitiesById(int id);
+    public StorageCapacities findByClassOfStorage(String name);
 }

@@ -23,9 +23,12 @@ public class LicensesPur implements Serializable {
     private String sku;
     private String provider;
     private int qty;
+    @Temporal(TemporalType.DATE)
     private Date actDate;
+    @Temporal(TemporalType.DATE)
     private Date expDate;
     private int annee;
+    private int duration;
 
     @JsonIgnore
     @ManyToOne

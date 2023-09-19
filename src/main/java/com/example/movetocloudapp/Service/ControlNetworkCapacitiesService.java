@@ -1,8 +1,6 @@
 package com.example.movetocloudapp.Service;
 
-import com.example.movetocloudapp.Entities.Availablity;
-import com.example.movetocloudapp.Entities.ControlNetworkCapacities;
-import com.example.movetocloudapp.Entities.EnvCompute;
+import com.example.movetocloudapp.Entities.*;
 import com.example.movetocloudapp.Repository.ControlNetworkCapacitiesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +40,10 @@ public class ControlNetworkCapacitiesService implements IControlNetworkCapacitie
     public ControlNetworkCapacities getControlNetworkCapacitiesById(int id) {
 
         return controlnetworkcapacitiesrepo.findById(id).orElse(null);
+    }
+    @Override
+    public ControlNetworkCapacities findByClassOfControlNetwork(String name){
+        return controlnetworkcapacitiesrepo.findByClassOfcontrolNetwork(name);
     }
 
 }

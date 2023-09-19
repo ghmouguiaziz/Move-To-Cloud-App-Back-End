@@ -24,5 +24,7 @@ public class StorageCapacities implements Serializable {
     private int volumeBrut;
     private int volumeNet;
     private int sfps;
+    private String name ;
+    private String descr ;
 
 }

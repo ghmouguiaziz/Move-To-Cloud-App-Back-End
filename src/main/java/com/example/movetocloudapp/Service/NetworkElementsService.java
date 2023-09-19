@@ -1,7 +1,9 @@
 package com.example.movetocloudapp.Service;
 
 
+import com.example.movetocloudapp.Entities.Availablity;
 import com.example.movetocloudapp.Entities.DataCenter;
+import com.example.movetocloudapp.Entities.EnvCompute;
 import com.example.movetocloudapp.Entities.NetworkElements;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.NetworkElementsRepo;
@@ -33,6 +35,10 @@ public class NetworkElementsService implements INetworkElementsService{
         dc1.setSpareQty(dc.getSpareQty());
         dc1.setAnnee(dc.getAnnee());
         dc1.setAvailablity(dc.getAvailablity());
+        dc1.setPorts(dc.getPorts());
+        dc1.setUsed(dc.getUsed());
+        dc1.setFree(dc.getFree());
+
         networkelementsrepo.saveAndFlush(dc1);
         return "updated";
     }
@@ -59,5 +65,8 @@ public class NetworkElementsService implements INetworkElementsService{
     public NetworkElements getNetworkElementsById(int id) {
 
         return networkelementsrepo.findById(id).orElse(null);
+    }
+    public List<NetworkElements> findByAvailablity(Availablity t, int id){
+        return networkelementsrepo.findByAvailablityAndDatacenter_IdDataCenter(t , id);
     }
 }

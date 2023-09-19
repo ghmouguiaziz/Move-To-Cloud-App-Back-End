@@ -6,6 +6,9 @@ import com.example.movetocloudapp.Repository.EnvComputeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service
@@ -27,6 +30,7 @@ public class EnvComputeService implements IEnvComputeService {
 
         EnvCompute dc1 = envcomputerepo.findById(id).get();
         dc1.setClassOfCompute(dc.getClassOfCompute());
+        dc1.setName(dc.getName());
         dc1.setQty(dc.getQty());
         dc1.setSpareQty(dc.getSpareQty());
         dc1.setCpu(dc.getCpu());
@@ -37,11 +41,15 @@ public class EnvComputeService implements IEnvComputeService {
         dc1.setBcvcpu(dc.getBcvcpu());
         dc1.setBcvram(dc.getBcvram());
         dc1.setIcvcpu(dc.getIcvcpu());
+        dc1.setIcvram(dc.getIcvram());
+        dc1.setInvcpu(dc.getInvcpu());
+        dc1.setInvram(dc.getInvram());
         dc1.setSfps(dc.getSfps());
         dc1.setVcpu(dc.getVcpu());
         dc1.setVram(dc.getVram());
+        dc1.setActDate(dc.getActDate());
         dc1.setSfpspare(dc.getSfpspare());
-        dc1.setIcvram(dc.getIcvram());
+
         envcomputerepo.saveAndFlush(dc1);
         return "updated";
     }
@@ -76,5 +84,11 @@ public class EnvComputeService implements IEnvComputeService {
     public List<EnvCompute> findByAvailablity(Availablity t, int id){
         return envcomputerepo.findByAvailablityAndDatacenter_IdDataCenter(t , id);
     }
-}
+    @Override
+
+    public List<EnvCompute> findComputesByYear(Availablity t, int id,int year){
+        return envcomputerepo.findByAvailablityAndDatacenter_IdDataCenterAndAnneeLessThanEqual(t,id,year);
+    }
+
+    }
 

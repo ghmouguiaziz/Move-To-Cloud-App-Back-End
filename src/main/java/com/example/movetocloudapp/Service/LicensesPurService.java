@@ -34,6 +34,7 @@ public class LicensesPurService implements ILicensesPurService {
         z1.setNodeType(z.getNodeType());
         z1.setQty(z.getQty());
         z1.setAnnee(z.getAnnee());
+        z1.setDuration(z.getDuration());
         LicensesPurrepo.saveAndFlush(z1);
         return "updated";
     }
@@ -54,6 +55,7 @@ public class LicensesPurService implements ILicensesPurService {
         return LicensesPurrepo.findById(id).orElse(null);
     }
     public List<LicensesPur> findByDataCenter(int id){
+
         return LicensesPurrepo.findByDatacenter_IdDataCenter(id);
     }
 }

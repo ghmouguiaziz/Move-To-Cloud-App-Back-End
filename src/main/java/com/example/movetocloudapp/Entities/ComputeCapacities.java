@@ -18,9 +18,9 @@ public class ComputeCapacities implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idComputeCapacities;
     private String classOfCompute ;
+    private String name ;
+    private String descr ;
     private int cpu ;
-    private int cpuPc;
-    private int ram;
     private int maxvcpu;
     private int maxvram;
     private int sfps;
