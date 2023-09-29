@@ -36,6 +36,8 @@ public class EnvControlNetworkService implements IEnvControlNetwork{
         dc1.setSfps(dc.getSfps());
         dc1.setSfpspare(dc.getSfpspare());
         dc1.setAvailablity(dc.getAvailablity());
+        dc1.setChamp(dc.getChamp());
+        dc1.setActDate(dc.getActDate());
         envcontrolnetworkrepo.saveAndFlush(dc1);
         return "updated";
     }

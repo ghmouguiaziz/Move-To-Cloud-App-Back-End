@@ -2,7 +2,7 @@ package com.example.movetocloudapp.Service;
 
 import com.example.movetocloudapp.Entities.Affiliate;
 import com.example.movetocloudapp.Entities.DataCenter;
-import com.example.movetocloudapp.Entities.Resources;
+import com.example.movetocloudapp.Entities.*;
 import com.example.movetocloudapp.Entities.TypeResource;
 import com.example.movetocloudapp.Repository.DataCenterRepo;
 import com.example.movetocloudapp.Repository.ResourcesRepo;
@@ -42,7 +42,7 @@ public class ResourcesService implements IResourcesService {
         dc1.setIcRam(dc.getIcRam());
         dc1.setCapaStorage(dc.getCapaStorage());
         dc1.setAnnee(dc.getAnnee());
-        dc1.setPerfStrorage(dc.getPerfStrorage());
+        dc1.setPerfStorage(dc.getPerfStorage());
         dc1.setHypothesys(dc.getHypothesys());
 
         resourcesrepo.saveAndFlush(dc1);
@@ -77,7 +77,7 @@ public class ResourcesService implements IResourcesService {
         DataCenter z = datacenterrepo.findByName(DataCenterName);
         return z.getResources();}
     @Override
-    public List <Resources> findByType(TypeResource t, int id){
-        return resourcesrepo.findByTypeAndDatacenter_IdDataCenter(t , id);
+    public List <Resources> findByType(TypeResource t, int id, Availablity a){
+        return resourcesrepo.findByTypeAndDatacenter_IdDataCenterAndAndAvailablity(t , id, a);
     }
 }

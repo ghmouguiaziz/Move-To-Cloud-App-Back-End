@@ -54,4 +54,8 @@ public class ServersAndDevicesPriceService implements IServersAndDevicesPriceSer
     public  List<ServersAndDevicesPrice> findByTypeServer(ServerType s){
         return ServersAndDevicesPricerepo.findByType(s);
     }
+    @Override
+    public  ServersAndDevicesPrice findByName(String s){
+        return ServersAndDevicesPricerepo.findByName(s);
+    }
 }

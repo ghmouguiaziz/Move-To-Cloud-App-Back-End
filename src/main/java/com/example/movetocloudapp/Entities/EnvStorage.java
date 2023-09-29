@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.persistence.GenerationType;
 import java.io.Serializable;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -32,6 +33,11 @@ public class EnvStorage implements Serializable {
     private int perfNetVolume ;
     private int capaGrossVolume ;
     private int annee;
+    @Temporal(TemporalType.DATE)
+    private Date actDate;
+
+    @Enumerated(EnumType.STRING)
+    private Champ champ ;
 
     @Enumerated(EnumType.STRING)
     private Availablity availablity ;

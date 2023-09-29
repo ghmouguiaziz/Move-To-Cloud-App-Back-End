@@ -13,6 +13,8 @@ import java.util.List;
 public class DataBaseController {
     @Autowired
     IZoneService izoneservice;
+    @Autowired
+    IServicesPriceService iServicesPriceservice;
 
     @Autowired
     IDevicesPurService iDevicesPurservice;
@@ -421,9 +423,9 @@ public class DataBaseController {
     public List<Resources> getAllResourcesByDataCenter(@PathVariable String dataCenterName) {
         return iresourcesservice.getAllResourcesByDataCenter(dataCenterName);
     }
-    @GetMapping("/findByType/{type}/{id}")
-   public List<Resources> findByType(@PathVariable TypeResource type, @PathVariable int id){
-        return iresourcesservice.findByType(type,id);
+    @GetMapping("/findByType/{type}/{id}/{a}")
+   public List<Resources> findByType(@PathVariable TypeResource type, @PathVariable int id,@PathVariable Availablity a){
+        return iresourcesservice.findByType(type,id,a);
     }
     @GetMapping("/findByAvailablity/{type}/{id}")
     public List<EnvCompute> findByAvailablity(@PathVariable Availablity type, @PathVariable int id){
@@ -586,6 +588,42 @@ public class DataBaseController {
     @GetMapping("/findByTypeServer/{type}")
     public  List<ServersAndDevicesPrice> findByTypeServer(@PathVariable ServerType type){
         return iServersAndDevicesPriceservice.findByTypeServer(type);
+    }
+    @GetMapping("/findServersAndDevicesPriceByName/{name}")
+    public  ServersAndDevicesPrice findByName(@PathVariable String name){
+        return iServersAndDevicesPriceservice.findByName(name);
+    }
+
+    //////////////////////////////////ServicesPrice///////////////////////////////////////////////
+    @PostMapping("/addServicesPrice")
+    public String addServicesPrice(@RequestBody ServicesPrice z) {
+
+        return  iServicesPriceservice.addServicesPrice(z);
+    }
+    @PutMapping("/updateServicesPrice/{id}")
+    public String updateServicesPrice(@RequestBody ServicesPrice z,@PathVariable int id){
+        return iServicesPriceservice.updateServicesPrice(z,id);
+    }
+    @DeleteMapping("/deleteServicesPrice/{id}")
+    public String deleteServicesPrice(@PathVariable int id) {
+
+        return  iServicesPriceservice.deleteServicesPrice(id);
+    }
+    @GetMapping("/getAllServicesPrice/{s}")
+    public List<ServicesPrice> getAllServicesPrice(@PathVariable Services s){
+
+        return iServicesPriceservice.getAllServicesPrice(s);
+    }
+    @GetMapping("/getServicesPriceByName/{name}")
+    public ServicesPrice getServicesPriceByName(@PathVariable String name){
+
+        return iServicesPriceservice.getServicesPriceByName(name);
+    }
+
+    @GetMapping("/getServicesPriceByProvider/{p}")
+    public List<ServicesPrice> getServicesPriceByProvider(@PathVariable String p){
+
+        return iServicesPriceservice.getServicesPriceByProvider(p);
     }
 
 

@@ -26,12 +26,14 @@ public class Resources implements Serializable {
     private int bcNgRam;
     private int icVcpu;
     private int icRam;
-    private int perfStrorage;
+    private int perfStorage;
     private int capaStorage;
     private String hypothesys;
 
     @Enumerated(EnumType.STRING)
     private TypeResource type;
+    @Enumerated(EnumType.STRING)
+    private Availablity availablity ;
     @JsonIgnore
     @ManyToOne
     private  DataCenter datacenter;

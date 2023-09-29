@@ -12,4 +12,5 @@ public interface IServersAndDevicesPriceService {
     public List<ServersAndDevicesPrice> getAllServersAndDevicesPrice();
     public ServersAndDevicesPrice getServersAndDevicesPriceById(int id);
     List<ServersAndDevicesPrice> findByTypeServer(ServerType s);
+    public  ServersAndDevicesPrice findByName(String s);
 }

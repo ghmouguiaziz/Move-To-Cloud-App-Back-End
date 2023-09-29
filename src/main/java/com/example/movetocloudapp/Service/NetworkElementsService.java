@@ -38,6 +38,8 @@ public class NetworkElementsService implements INetworkElementsService{
         dc1.setPorts(dc.getPorts());
         dc1.setUsed(dc.getUsed());
         dc1.setFree(dc.getFree());
+        dc1.setChamp(dc.getChamp());
+        dc1.setActDate(dc.getActDate());
 
         networkelementsrepo.saveAndFlush(dc1);
         return "updated";

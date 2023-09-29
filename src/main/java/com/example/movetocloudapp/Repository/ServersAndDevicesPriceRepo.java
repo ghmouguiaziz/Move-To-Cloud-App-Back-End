@@ -9,4 +9,5 @@ import java.util.List;
 public interface ServersAndDevicesPriceRepo extends JpaRepository<ServersAndDevicesPrice,Integer> {
 
     List<ServersAndDevicesPrice> findByType(ServerType s);
+    ServersAndDevicesPrice findByName(String name);
 }

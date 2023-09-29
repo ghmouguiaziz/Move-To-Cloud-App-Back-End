@@ -42,6 +42,8 @@ public class EnvStorageService implements IEnvStorageService{
         dc1.setPerfNetVolume(dc.getPerfNetVolume());
         dc1.setCapaGrossVolume(dc.getCapaGrossVolume());
         dc1.setCapaNetVolume(dc.getCapaNetVolume());
+        dc1.setChamp(dc.getChamp());
+        dc1.setActDate(dc.getActDate());
         envstoragerepo.saveAndFlush(dc1);
         return "updated";
     }

@@ -9,6 +9,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.persistence.GenerationType;
 import java.io.Serializable;
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,6 +26,11 @@ public class EnvControlNetwork implements Serializable {
     private int sfpspare;
     private int sfps;
     private int annee;
+    @Temporal(TemporalType.DATE)
+    private Date actDate;
+
+    @Enumerated(EnumType.STRING)
+    private Champ champ ;
     @Enumerated(EnumType.STRING)
     private Availablity availablity ;
     @JsonIgnore
